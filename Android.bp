@@ -5,25 +5,44 @@
 soong_namespace {
     imports: [
         "vendor/sony/sm8150-common",
+        "hardware/qcom-caf/sm8150",
         "hardware/qcom-caf/wlan",
+        "hardware/sony",
+        "vendor/qcom/opensource/commonsys/display",
+        "vendor/qcom/opensource/commonsys-intf/display",
+        "vendor/qcom/opensource/dataservices",
+        "vendor/qcom/opensource/display",
     ],
 }
 
 cc_prebuilt_library_shared {
-    name: "libhdr_tm",
+    name: "libcammw_util",
     owner: "sony",
     strip: {
         none: true,
     },
     target: {
-        android_arm64: {
+        android_arm: {
             srcs: [
-                "proprietary/vendor/lib64/libhdr_tm.so",
+                "proprietary/vendor/lib/libcammw_util.so",
             ],
             shared_libs: [
-                "libcutils",
                 "liblog",
-                "libexpat",
+                "libcutils",
+                "libhardware",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libcammw_util.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libcutils",
                 "libhardware",
                 "libc++",
                 "libc",
@@ -32,33 +51,46 @@ cc_prebuilt_library_shared {
             ],
         },
     },
-    compile_multilib: "64",
+    compile_multilib: "both",
     prefer: true,
     soc_specific: true,
 }
 
-cc_prebuilt_binary {
-    name: "ATFWD-daemon",
+cc_prebuilt_library_shared {
+    name: "libsomc_camerapal",
     owner: "sony",
+    strip: {
+        none: true,
+    },
     target: {
-        android_arm64: {
+        android_arm: {
             srcs: [
-                "proprietary/vendor/bin/ATFWD-daemon",
+                "proprietary/vendor/lib/libsomc_camerapal.so",
             ],
             shared_libs: [
+                "liblog",
                 "libcutils",
                 "libutils",
-                "libqmi",
-                "libmdmdetect",
-                "libqmi_client_qmux",
-                "libqmi_client_helper",
-                "libqmiservices",
-                "libqmi_cci",
+                "libutilscallstack",
+                "libidd",
+                "libprotobuf-c-idd",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libsomc_camerapal.so",
+            ],
+            shared_libs: [
                 "liblog",
-                "libavservices_minijail",
-                "libbase",
-                "libhidlbase",
-                "vendor.qti.hardware.radio.atcmdfwd@1.0",
+                "libcutils",
+                "libutils",
+                "libutilscallstack",
+                "libidd",
+                "libprotobuf-c-idd",
                 "libc++",
                 "libc",
                 "libm",
@@ -66,10 +98,431 @@ cc_prebuilt_binary {
             ],
         },
     },
-    compile_multilib: "64",
+    compile_multilib: "both",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libswdap",
+    owner: "sony",
     strip: {
         none: true,
     },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/soundfx/libswdap.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libaudioutils",
+                "libdapparamstorage",
+                "libhidlbase",
+                "libhidltransport",
+                "vendor.dolby.hardware.dms@1.0",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/soundfx/libswdap.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libaudioutils",
+                "libdapparamstorage",
+                "libhidlbase",
+                "libhidltransport",
+                "vendor.dolby.hardware.dms@1.0",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "both",
+    relative_install_path: "soundfx",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_bokeh_comp_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_bokeh_comp_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libmorpho_dual_camera",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_face_detector_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_face_detector_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_hal_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_hal_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_image_conv_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_image_conv_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_jpeg_enc_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_jpeg_enc_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_raw_conv_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_raw_conv_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_raw_proc_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_raw_proc_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_req_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_req_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcammw",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libcammw.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libcamera_metadata",
+                "libcutils",
+                "libhardware",
+                "libutils",
+                "libmiscta",
+                "libsomc_camerapal",
+                "libsensorndkbridge",
+                "libhidlbase",
+                "libsomc_alfortlpserv",
+                "libsomc_pdnserv",
+                "libbinder_ndk",
+                "android.hardware.light-V1-ndk_platform",
+                "vendor.semc.hardware.extlight-V1-ndk_platform",
+                "liblights-core",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_core",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libexcal_core.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libcammw_util",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_system",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libexcal_system.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libcammw",
+                "libjpeg",
+                "libsomc_raisin",
+                "libsomc_raisincl",
+                "libsomc_marble",
+                "libsomc_spica",
+                "libsomc_toppo",
+                "libsomc_mugichoco",
+                "libsomc_melonpan",
+                "libsomc_yummy",
+                "libsomc_bordeaux",
+                "libsomc_canele",
+                "libsomc_buttercake",
+                "libsomc_shortcake",
+                "libsomc_pretzchoco",
+                "libsomc_sumomo",
+                "libsomc_cheesescone",
+                "libsomc_financier",
+                "libsomc_mln",
+                "libsomc_chokoballkeymgr",
+                "libsomc_parisbrest",
+                "libsomc_soda",
+                "libsomc_angelpie",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_chokoballpal",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_chokoballpal.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libcammw_util",
+                "libutils",
+                "libui",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
     prefer: true,
     soc_specific: true,
 }
@@ -136,318 +589,5 @@ cc_prebuilt_binary {
     },
     prefer: true,
     relative_install_path: "hw",
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "vendor.semc.hardware.secd@1.0-service",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/hw/vendor.semc.hardware.secd@1.0-service",
-            ],
-            shared_libs: [
-                "liblog",
-                "libutils",
-                "libhidlbase",
-                "libhidltransport",
-                "libmiscta",
-                "vendor.somc.hardware.security.secd@1.0",
-                "libcrypto",
-                "libsqlite",
-                "libtpm",
-                "libkeymasterutils",
-                "libkeymasterprovision",
-                "libkeymasterdeviceutils",
-                "libqtikeymaster4",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    relative_install_path: "hw",
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "keyprovd",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/keyprovd",
-            ],
-            shared_libs: [
-                "libsuntory",
-                "libcutils",
-                "liblog",
-                "libcrypto",
-                "libkeymasterutils",
-                "libkeymasterprovision",
-                "libkeymasterdeviceutils",
-                "libmiscta",
-                "libqtikeymaster4",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "mlog_qmi_service",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/mlog_qmi_service",
-            ],
-            shared_libs: [
-                "libcutils",
-                "liblog",
-                "libqmi_csi",
-                "libqmi_common_so",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "pd-mapper",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/pd-mapper",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "liblog",
-                "libjson",
-                "libqmi_cci",
-                "libqmi_common_so",
-                "libqmi_encdec",
-                "libqmi_csi",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "qseecomd",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/qseecomd",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "liblog",
-                "libQSEEComAPI",
-                "libdrmfs",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "rmt_storage",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/rmt_storage",
-            ],
-            shared_libs: [
-                "libqmi_csi",
-                "libqmi_common_so",
-                "libcutils",
-                "liblog",
-                "libmdmdetect",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "sct_service",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/sct_service",
-            ],
-            shared_libs: [
-                "libqmi_csi",
-                "libqmi_common_so",
-                "libcutils",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "slim_daemon",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/slim_daemon",
-            ],
-            shared_libs: [
-                "libgps.utils",
-                "liblog",
-                "libdiag",
-                "libqmi_csi",
-                "libqmi_cci",
-                "libqmi_common_so",
-                "libqmi_encdec",
-                "libutils",
-                "libsensorndkbridge",
-                "android.hardware.sensors@1.0",
-                "android.frameworks.sensorservice@1.0",
-                "libloc_api_v02",
-                "libloc_core",
-                "liblbs_core",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "ssr_setup",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/ssr_setup",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "libmdmdetect",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "ta_qmi_service",
-    owner: "sony",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/ta_qmi_service",
-            ],
-            shared_libs: [
-                "libqmi_csi",
-                "libqmi_common_so",
-                "libcutils",
-                "libta",
-                "libmiscta",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
     soc_specific: true,
 }
