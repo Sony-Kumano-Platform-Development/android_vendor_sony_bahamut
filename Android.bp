@@ -16,6 +16,43 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
+    name: "libcacao_common",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libcacao_common.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libcacao_common.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "both",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libcammw_util",
     owner: "sony",
     strip: {
@@ -44,6 +81,45 @@ cc_prebuilt_library_shared {
                 "liblog",
                 "libcutils",
                 "libhardware",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "both",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_core",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libexcal_core.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libcammw_util",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libexcal_core.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libcammw_util",
                 "libc++",
                 "libc",
                 "libm",
@@ -184,6 +260,151 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libexcal_ckb_service_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_ckb_service_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libdevice_security_vendor",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_color_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_color_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_debug_display_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_debug_display_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_exposure_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_exposure_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_eye_stabilizer_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_eye_stabilizer_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libsomc_cornfrosty",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libexcal_face_detector_plugin",
     owner: "sony",
     strip: {
@@ -200,6 +421,149 @@ cc_prebuilt_library_shared {
                 "libexcal_system",
                 "liblog",
                 "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_flicker_detector_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_flicker_detector_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_focus_stats_conv_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_focus_stats_conv_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_food_comp_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_food_comp_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libsony_naruto",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_food_detector_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_food_detector_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libsony_fooddetect",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_fusion_comp_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_fusion_comp_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
                 "libc++",
                 "libc",
                 "libm",
@@ -243,6 +607,66 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libexcal_hdr_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_hdr_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libhigh_dynamic_range",
+                "libmpbase",
+                "libarcsoft_hdr_adapter",
+                "libarcsoft_low_light_hdr",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_idt_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_idt_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libexcal_image_conv_plugin",
     owner: "sony",
     strip: {
@@ -258,6 +682,34 @@ cc_prebuilt_library_shared {
                 "libexcal_core",
                 "libexcal_system",
                 "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_iq_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_iq_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
                 "libc++",
                 "libc",
                 "libm",
@@ -300,6 +752,235 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libexcal_lens_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_lens_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libz",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_motion_detector_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_motion_detector_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_motion_estimation_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_motion_estimation_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_multiframe_nr_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_multiframe_nr_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_object_detector_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_object_detector_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_object_tracker_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_object_tracker_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_prc_image_conv_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_prc_image_conv_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_process_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_process_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libexcal_raw_conv_plugin",
     owner: "sony",
     strip: {
@@ -315,6 +996,34 @@ cc_prebuilt_library_shared {
                 "libexcal_core",
                 "libexcal_system",
                 "libcammw",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_raw_dump_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_raw_dump_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
                 "libc++",
                 "libc",
                 "libm",
@@ -386,6 +1095,179 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libexcal_scene_detector_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_scene_detector_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_snapshot_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_snapshot_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_splitter_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_splitter_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libexcal_stream_ctrl_plugin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/camera/libexcal_stream_ctrl_plugin.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    relative_install_path: "camera",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_hdr_adapter",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libarcsoft_hdr_adapter.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libhigh_dynamic_range",
+                "libarcsoft_low_light_hdr",
+                "libmpbase",
+                "libc",
+                "libm",
+                "libc++",
+                "libdl",
+                "liblog",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    check_elf_files: false,
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcacao_process_ctrl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libcacao_process_ctrl.so",
+            ],
+            shared_libs: [
+                "libsomc_camerapal",
+                "libexcal_core",
+                "libexcal_system",
+                "libcacao_common",
+                "libqdMetaData",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libcammw",
     owner: "sony",
     strip: {
@@ -409,35 +1291,9 @@ cc_prebuilt_library_shared {
                 "libsomc_alfortlpserv",
                 "libsomc_pdnserv",
                 "libbinder_ndk",
-                "android.hardware.light-V1-ndk_platform",
+                "android.hardware.light-V1-ndk",
                 "vendor.semc.hardware.extlight-V1-ndk_platform",
                 "liblights-core",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "32",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libexcal_core",
-    owner: "sony",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/vendor/lib/libexcal_core.so",
-            ],
-            shared_libs: [
-                "libsomc_camerapal",
-                "libcammw_util",
                 "libc++",
                 "libc",
                 "libm",
@@ -500,6 +1356,221 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libsomc_angelpie",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_angelpie.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_angelpie_impl",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_bordeaux",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_bordeaux.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_bordeauxrsc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_buttercake",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_buttercake.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_buttercakersc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_camerahal",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_camerahal.so",
+            ],
+            shared_libs: [
+                "libutils",
+                "libui-v34",
+                "liblog",
+                "libcutils",
+                "libbinder",
+                "libsync",
+                "libsomc_camerapal",
+                "libexcal_system",
+                "libexcal_core",
+                "libqdMetaData",
+                "local_libcamera_metadata",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_canele",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_canele.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_canelersc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_cheesescone",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_cheesescone.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_cheesesconersc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_chokoballcmn",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_chokoballcmn.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libsomc_chokoballpal",
     owner: "sony",
     strip: {
@@ -514,7 +1585,652 @@ cc_prebuilt_library_shared {
                 "liblog",
                 "libcammw_util",
                 "libutils",
-                "libui",
+                "libui-v34",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_financier",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_financier.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_financierrsc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_marble",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_marble.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_marblersc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_melonpan",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_melonpan.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_melonpanrsc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_mln",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_mln.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_madeleine_core",
+                "libSNPE",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_mugichoco",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_mugichoco.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_mugichocorsc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_parisbrest",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_parisbrest.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_parisbrestrsc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_pretzchoco",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_pretzchoco.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_pretzchocorsc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_raisin",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_raisin.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_raisinrsc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_raisincl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_raisincl.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_raisinclrsc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_shortcake",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_shortcake.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_shortcakersc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_soda",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_soda.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_soda_impl",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_spica",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_spica.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_spicarsc",
+                "libsomc_chokoballcmn",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_sumomo",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_sumomo.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_sumomorsc",
+                "libsomc_chokoballkeymgr",
+                "libOpenCL",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_toppo",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_toppo.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_topporsc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsomc_yummy",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/libsomc_yummy.so",
+            ],
+            shared_libs: [
+                "libsomc_chokoballpal",
+                "libsomc_chokoballcmn",
+                "libsomc_yummyrsc",
+                "libOpenCL",
+                "libsomc_chokoballkeymgr",
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.somc.camera.device@3.2-impl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.somc.camera.device@3.2-impl.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "libhidltransport",
+                "libutils",
+                "libcutils",
+                "android.hardware.camera.device@3.2",
+                "android.hardware.camera.provider@2.4",
+                "android.hardware.graphics.mapper@3.0",
+                "liblog",
+                "libfmq",
+                "libsomc_camerahal",
+                "local_libcamera_metadata",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.somc.camera.device@3.3-impl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.somc.camera.device@3.3-impl.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "libhidltransport",
+                "libutils",
+                "libcutils",
+                "vendor.somc.camera.device@3.2-impl",
+                "android.hardware.camera.device@3.2",
+                "android.hardware.camera.device@3.3",
+                "android.hardware.camera.provider@2.4",
+                "android.hardware.graphics.mapper@3.0",
+                "liblog",
+                "libfmq",
+                "libsomc_camerahal",
+                "local_libcamera_metadata",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.somc.camera.device@3.4-impl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.somc.camera.device@3.4-impl.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "libhidltransport",
+                "libutils",
+                "libcutils",
+                "vendor.somc.camera.device@3.2-impl",
+                "vendor.somc.camera.device@3.3-impl",
+                "android.hardware.camera.device@3.2",
+                "android.hardware.camera.device@3.3",
+                "android.hardware.camera.device@3.4",
+                "android.hardware.camera.provider@2.4",
+                "android.hardware.graphics.mapper@3.0",
+                "liblog",
+                "libfmq",
+                "libsomc_camerahal",
+                "local_libcamera_metadata",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.somc.hardware.camera.cacao@3.2-impl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.somc.hardware.camera.cacao@3.2-impl.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "libhidltransport",
+                "libutils",
+                "liblog",
+                "libcutils",
+                "android.hardware.graphics.mapper@3.0",
+                "libsomc_camerapal",
+                "vendor.somc.hardware.camera.provider@1.0",
+                "vendor.somc.hardware.camera.cacao@3.0",
+                "vendor.somc.hardware.camera.cacao@3.1",
+                "vendor.somc.hardware.camera.cacao@3.2",
+                "libcacao_common",
+                "libcacao_process_ctrl",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.somc.hardware.camera.provider@1.0",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/lib/vendor.somc.hardware.camera.provider@1.0.so",
+            ],
+            shared_libs: [
+                "android.hardware.camera.common@1.0",
+                "android.hardware.camera.device@1.0",
+                "android.hardware.camera.device@3.2",
+                "android.hardware.camera.provider@2.4",
+                "vendor.somc.hardware.camera.cacao@1.0",
+                "vendor.somc.hardware.camera.cacao@2.0",
+                "vendor.somc.hardware.camera.cacao@3.0",
+                "vendor.somc.hardware.camera.cacao@3.1",
+                "vendor.somc.hardware.camera.device@1.0",
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libcutils",
                 "libc++",
                 "libc",
                 "libm",
@@ -584,6 +2300,53 @@ cc_prebuilt_binary {
         },
     },
     compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "vendor.somc.hardware.camera.provider@1.0-service",
+    owner: "sony",
+    target: {
+        android_arm: {
+            srcs: [
+                "proprietary/vendor/bin/hw/vendor.somc.hardware.camera.provider@1.0-service",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "libhidltransport",
+                "libutils",
+                "libcutils",
+                "liblog",
+                "android.hidl.allocator@1.0",
+                "android.hidl.memory@1.0",
+                "android.hardware.graphics.mapper@3.0",
+                "android.hardware.camera.common@1.0",
+                "android.hardware.camera.device@3.2",
+                "android.hardware.camera.device@3.3",
+                "android.hardware.camera.device@3.4",
+                "android.hardware.camera.provider@2.4",
+                "vendor.somc.camera.device@3.2-impl",
+                "vendor.somc.camera.device@3.3-impl",
+                "vendor.somc.camera.device@3.4-impl",
+                "vendor.somc.hardware.camera.provider@1.0",
+                "vendor.somc.hardware.camera.cacao@3.1",
+                "vendor.somc.hardware.camera.cacao@3.2",
+                "vendor.somc.hardware.camera.cacao@3.2-impl",
+                "libsomc_camerahal",
+                "local_libcamera_metadata",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "32",
     strip: {
         none: true,
     },

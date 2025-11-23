@@ -378,20 +378,77 @@ PRODUCT_COPY_FILES += \
     vendor/sony/bahamut/proprietary/vendor/lib/camera/com.sony.sensormodule.vulture_s5k3m3.bin:$(TARGET_COPY_OUT_VENDOR)/lib/camera/com.sony.sensormodule.vulture_s5k3m3.bin
 
 PRODUCT_PACKAGES += \
+    libcacao_common \
     libcammw_util \
+    libexcal_core \
     libsomc_camerapal \
     libswdap \
     libexcal_bokeh_comp_plugin \
+    libexcal_ckb_service_plugin \
+    libexcal_color_ctrl_plugin \
+    libexcal_debug_display_plugin \
+    libexcal_exposure_ctrl_plugin \
+    libexcal_eye_stabilizer_plugin \
     libexcal_face_detector_plugin \
+    libexcal_flicker_detector_plugin \
+    libexcal_focus_stats_conv_plugin \
+    libexcal_food_comp_plugin \
+    libexcal_food_detector_plugin \
+    libexcal_fusion_comp_plugin \
     libexcal_hal_ctrl_plugin \
+    libexcal_hdr_plugin \
+    libexcal_idt_ctrl_plugin \
     libexcal_image_conv_plugin \
+    libexcal_iq_ctrl_plugin \
     libexcal_jpeg_enc_plugin \
+    libexcal_lens_ctrl_plugin \
+    libexcal_motion_detector_plugin \
+    libexcal_motion_estimation_plugin \
+    libexcal_multiframe_nr_plugin \
+    libexcal_object_detector_plugin \
+    libexcal_object_tracker_plugin \
+    libexcal_prc_image_conv_plugin \
+    libexcal_process_ctrl_plugin \
     libexcal_raw_conv_plugin \
+    libexcal_raw_dump_plugin \
     libexcal_raw_proc_plugin \
     libexcal_req_ctrl_plugin \
+    libexcal_scene_detector_plugin \
+    libexcal_snapshot_ctrl_plugin \
+    libexcal_splitter_plugin \
+    libexcal_stream_ctrl_plugin \
+    libarcsoft_hdr_adapter \
+    libcacao_process_ctrl \
     libcammw \
-    libexcal_core \
     libexcal_system \
+    libsomc_angelpie \
+    libsomc_bordeaux \
+    libsomc_buttercake \
+    libsomc_camerahal \
+    libsomc_canele \
+    libsomc_cheesescone \
+    libsomc_chokoballcmn \
     libsomc_chokoballpal \
+    libsomc_financier \
+    libsomc_marble \
+    libsomc_melonpan \
+    libsomc_mln \
+    libsomc_mugichoco \
+    libsomc_parisbrest \
+    libsomc_pretzchoco \
+    libsomc_raisin \
+    libsomc_raisincl \
+    libsomc_shortcake \
+    libsomc_soda \
+    libsomc_spica \
+    libsomc_sumomo \
+    libsomc_toppo \
+    libsomc_yummy \
+    vendor.somc.camera.device@3.2-impl \
+    vendor.somc.camera.device@3.3-impl \
+    vendor.somc.camera.device@3.4-impl \
+    vendor.somc.hardware.camera.cacao@3.2-impl \
+    vendor.somc.hardware.camera.provider@1.0 \
     cnss-daemon \
-    illumination_service
+    illumination_service \
+    vendor.somc.hardware.camera.provider@1.0-service
